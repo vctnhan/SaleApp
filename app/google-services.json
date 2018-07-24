@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1033580767496",
+    "firebase_url": "https://sale-app-bae86.firebaseio.com",
+    "project_id": "sale-app-bae86",
+    "storage_bucket": "sale-app-bae86.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033580767496:android:b87106fd1032027a",
+        "android_client_info": {
+          "package_name": "com.hanwool.saleapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1033580767496-lt37jtk6cvmls76fht81mu5ra7l61p9e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDY7GzMZQElJy19pyKq8Yu_8vGt7dRtbsg"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
