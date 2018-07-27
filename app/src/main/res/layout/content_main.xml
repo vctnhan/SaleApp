@@ -20,7 +20,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="#fff"
                 android:orientation="vertical">
@@ -29,7 +29,7 @@
 
                     android:id="@+id/slideAds"
                     android:layout_width="match_parent"
-                    android:layout_height="300dp"/>
+                    android:layout_height="150dp"/>
             </LinearLayout>
 
             <LinearLayout
@@ -46,12 +46,14 @@
                     android:text="New"
                     android:gravity="center"/>
 
-                <ListView
+                <android.support.v7.widget.RecyclerView
+                    android:background="@drawable/pinkbg"
+
                     android:id="@+id/lstNewPhone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:divider="#faf7f7"
-                    android:dividerHeight="1dp"></ListView>
+                    android:dividerHeight="1dp"></android.support.v7.widget.RecyclerView>
 
             </LinearLayout>
         </LinearLayout>

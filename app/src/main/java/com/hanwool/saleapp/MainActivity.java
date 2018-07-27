@@ -1,15 +1,12 @@
 package com.hanwool.saleapp;
 
 import android.content.Intent;
-import android.media.Image;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -25,24 +22,29 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
 
-import com.firebase.ui.storage.images.FirebaseImageLoader;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.hanwool.saleapp.Adapter.listViewAdapter;
+import com.hanwool.saleapp.adapter.SanphammoiAdapter;
+import com.hanwool.saleapp.modal.Sanpham;
+import com.hanwool.saleapp.ultil.Server;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -55,10 +57,10 @@ public class MainActivity extends AppCompatActivity
     HashMap<String, Integer> HashMapForLocalRes ;
     ProgressBar progressBar;
     SliderLayout slideAds;
-    ListView lvNewPhone;
-    TextView txtPhoneName, txtPhonePrice;
-    ArrayList<String> arrayList;
-    ArrayAdapter<String> arrayAdapter;
+    RecyclerView lvNewPhone;
+
+    ArrayList<Sanpham> mangsanpham;
+    SanphammoiAdapter sanphammoiAdapter;
     ImageView imgNewPhone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,69 +68,14 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        AnhXa();
         progressBar= new ProgressBar(this);
-        imgNewPhone= findViewById(R.id.imgNewPhone);
-        lvNewPhone= findViewById(R.id.lstNewPhone);
-        arrayList  = new ArrayList<String>();
-
-       arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
-        lvNewPhone.setAdapter(arrayAdapter);
-
         Intent i = getIntent();
         ProgressBar progressBar =new ProgressBar(this);
        SliderLayout slideAds = findViewById(R.id.slideAds);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference samsungFB = database.getReference("Samsung");
-        // lây thông tin đt Samsung từ firebase
-        samsungFB.addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-                String a = dataSnapshot.getValue().toString();
-//                Toast.makeText(MainActivity.this, a , Toast.LENGTH_LONG).show();
-                arrayList.add(a);
-//                arrayList.add(new dataListView(
-//                        a,a,a
-//                ));
-//
-//                listViewAdapter adapter = new listViewAdapter
-//                        (MainActivity.this,R.layout.item_lvtrangchu,arrayList);
-//
-//
-//
-//
-                    arrayAdapter.notifyDataSetChanged();
-//                lvNewPhone.setAdapter(adapter);
-            }
 
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot dataSnapshot) {
-
-            }
-
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-        //
-        //firebase storage
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference storageRef = storage.getReference();
-        StorageReference newPhoneFB = storage.getReference("Samsung");
-        //lay anh tu firebase
-        StorageReference s9 = storageRef.child("Samsung/s9.jpg");
-        StorageReference s8 = storageRef.child("Samsung/s8.png");
-        StorageReference s7 = storageRef.child("Samsung/s7.png");
         // Slide ảnh
 
         //Call this method if you want to add images from URL .
@@ -179,8 +126,58 @@ public class MainActivity extends AppCompatActivity
 //                .using(new FirebaseImageLoader())
 //                .load(storageReference)
 //                .into(imgAds);
-
+        getDulieuspmoi();
     }
+    public void AnhXa(){
+        lvNewPhone= findViewById(R.id.lstNewPhone);
+        mangsanpham = new ArrayList<>();
+        sanphammoiAdapter = new SanphammoiAdapter(getApplicationContext(),mangsanpham);
+        lvNewPhone.setHasFixedSize(true);
+        lvNewPhone.setLayoutManager
+                (new GridLayoutManager(getApplicationContext(),2));
+        lvNewPhone.setAdapter(sanphammoiAdapter);
+    }
+    private void getDulieuspmoi() {
+        RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Server.DuongdanSanpham, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                if (response != null){
+                    int ID = 0;
+                    String Tensp = "";
+                    Integer Giasp=0;
+                    String Hinhanhsp= "";
+                    String Motasp="";
+                    int idsp = 0;
+                    for (int i =0; i<response.length(); i++){
+                        try {
+                            JSONObject jsonObject = response.getJSONObject(i);
+                            ID = jsonObject.getInt("id");
+                            Tensp= jsonObject.getString("tensanpham");
+                            Giasp= jsonObject.getInt("giasanpham");
+                            Hinhanhsp= jsonObject.getString("hinhanhsanpham");
+                            Motasp= jsonObject.getString("motasanpham");
+                            idsp= jsonObject.getInt("idsanpham");
+                            mangsanpham.add(new Sanpham(ID,Tensp,Giasp,Hinhanhsp,Motasp,idsp));
+                            sanphammoiAdapter.notifyDataSetChanged();
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                    }
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        requestQueue.add(jsonArrayRequest);
+    }
+
+
     public void getDataFB(){
 
     }
