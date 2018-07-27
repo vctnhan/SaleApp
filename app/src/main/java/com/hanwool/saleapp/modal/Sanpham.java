@@ -4,15 +4,15 @@ public class Sanpham {
     public  String Tensp ;
     public Integer Giasp;
     public  String Hinhanhsp, Motasp;
-    public int idsp;
+    public int idlsp;
 
-    public Sanpham(int id, String tensp, Integer giasp, String hinhanhsp, String motasp, int idsp) {
+    public Sanpham(int id, String tensp, Integer giasp, String hinhanhsp, String motasp, int idlsp) {
         this.id = id;
         Tensp = tensp;
         Giasp = giasp;
         Hinhanhsp = hinhanhsp;
         Motasp = motasp;
-        this.idsp = idsp;
+        this.idlsp = idlsp;
     }
 
     public int getId() {
@@ -55,11 +55,11 @@ public class Sanpham {
         Motasp = motasp;
     }
 
-    public int getIdsp() {
-        return idsp;
+    public int getidlsp() {
+        return idlsp;
     }
 
-    public void setIdsp(int idsp) {
-        this.idsp = idsp;
+    public void setidlsp(int idlsp) {
+        this.idlsp = idlsp;
     }
 }
