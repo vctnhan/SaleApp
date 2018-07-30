@@ -41,9 +41,9 @@ public class SanphammoiAdapter extends RecyclerView.Adapter<SanphammoiAdapter.It
         DecimalFormat decimalFormat= new DecimalFormat("###,###,###");
         holder.txtNewPhonePrice.setText("Giá: "+ decimalFormat.format(sanpham.getGiasp())+ "VNĐ");
         Picasso.with(context).load(sanpham.getHinhanhsp())
-                        .placeholder(R.drawable.logo)
-                        .error(R.drawable.imgerror)
-                        .into(holder.imgNewPhone);
+                .placeholder(R.drawable.logo)
+                .error(R.drawable.imgerror)
+                .into(holder.imgNewPhone);
 
     }
 

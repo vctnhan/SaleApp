@@ -41,6 +41,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.hanwool.saleapp.adapter.SanphammoiAdapter;
+import com.hanwool.saleapp.modal.Loaisp;
 import com.hanwool.saleapp.modal.Sanpham;
 import com.hanwool.saleapp.ultil.Server;
 
@@ -61,7 +62,7 @@ public class MainActivity extends AppCompatActivity
 
     ArrayList<Sanpham> mangsanpham;
     SanphammoiAdapter sanphammoiAdapter;
-    ImageView imgNewPhone;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,7 +73,7 @@ public class MainActivity extends AppCompatActivity
         progressBar= new ProgressBar(this);
         Intent i = getIntent();
         ProgressBar progressBar =new ProgressBar(this);
-       SliderLayout slideAds = findViewById(R.id.slideAds);
+        SliderLayout slideAds = findViewById(R.id.slideAds);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference samsungFB = database.getReference("Samsung");
 
@@ -178,13 +179,10 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    public void getDataFB(){
-
-    }
     @Override
     protected void onStop() {
 
-        slideAds.stopAutoCycle();
+//        slideAds.stopAutoCycle();
 
         super.onStop();
     }
@@ -275,7 +273,8 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-
+            Intent i = new Intent(MainActivity.this, LoaisanphamActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
