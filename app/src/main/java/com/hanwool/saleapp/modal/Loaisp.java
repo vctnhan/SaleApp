@@ -1,6 +1,8 @@
 package com.hanwool.saleapp.modal;
 
-public class Loaisp {
+import java.io.Serializable;
+
+public class Loaisp implements Serializable {
     public  int id;
     public  String Tenloaisp;
     public  String Hinhanhloaisp;

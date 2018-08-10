@@ -272,11 +272,13 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
+            //trangchu
         } else if (id == R.id.nav_gallery) {
-            Intent i = new Intent(MainActivity.this, LoaisanphamActivity.class);
+           Intent i = new Intent(MainActivity.this, TatcasanphamActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_slideshow) {
-
+            Intent i = new Intent(MainActivity.this, LoaisanphamActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -15,16 +16,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ImageView;
+import android.widget.ListView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.hanwool.saleapp.adapter.LoaispAdapter;
-import com.hanwool.saleapp.adapter.SanphammoiAdapter;
-import com.hanwool.saleapp.modal.Loaisp;
+import com.hanwool.saleapp.adapter.TatcasanphamAdapter;
 import com.hanwool.saleapp.modal.Sanpham;
 import com.hanwool.saleapp.ultil.Server;
 
@@ -34,24 +33,20 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class LoaisanphamActivity extends AppCompatActivity
+public class TatcasanphamActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    RecyclerView lvPhoneBrand;
-    ArrayList<Loaisp> mangLoaisp;
-    Loaisp loaisp;
-    LoaispAdapter loaispAdapter;
-
+RecyclerView lvAllPhone;
+TatcasanphamAdapter tatcasanphamAdapter;
+ArrayList<Sanpham> mangsanpham;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_loaisanpham_);
-
+        setContentView(R.layout.activity_tatcasanpham);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        AnhXa();
-
-
+        Anhxa();
+       getAllPhone();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -61,35 +56,40 @@ public class LoaisanphamActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-        getLoaisp();
     }
-    public void AnhXa(){
-        lvPhoneBrand= findViewById(R.id.lvPhoneBrand);
-        mangLoaisp = new ArrayList<>();
-        loaispAdapter = new LoaispAdapter(getApplicationContext(),mangLoaisp);
-        lvPhoneBrand.setHasFixedSize(true);
-        lvPhoneBrand.setLayoutManager
-                (new GridLayoutManager(getApplicationContext(),2));
-        lvPhoneBrand.setAdapter(loaispAdapter);
-
+    private void Anhxa() {
+        lvAllPhone= findViewById(R.id.lvAllPhone);
+        mangsanpham= new ArrayList<>();
+        tatcasanphamAdapter = new TatcasanphamAdapter(getApplicationContext(),mangsanpham);
+        //
+        lvAllPhone.setHasFixedSize(true);
+        lvAllPhone.setLayoutManager
+                (new LinearLayoutManager(this));
+        lvAllPhone.setAdapter(tatcasanphamAdapter);
     }
-    private void getLoaisp() {
+    private void getAllPhone() {
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Server.DuongdanLoaisp, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Server.DuongdanTatcasanpham, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 if (response != null){
                     int ID = 0;
-                    String Tenloaisp = "";
-                    String Hinhanhloaisp= "";
+                    String Tensp = "";
+                    Integer Giasp=0;
+                    String Hinhanhsp= "";
+                    String Motasp="";
+                    int idlsp = 0;
                     for (int i =0; i<response.length(); i++){
                         try {
                             JSONObject jsonObject = response.getJSONObject(i);
                             ID = jsonObject.getInt("id");
-                            Tenloaisp= jsonObject.getString("tenloaisp");
-                            Hinhanhloaisp= jsonObject.getString("hinhanhloaisp");
-                            mangLoaisp.add(new Loaisp(ID,Tenloaisp,Hinhanhloaisp));
-                            loaispAdapter.notifyDataSetChanged();
+                            Tensp= jsonObject.getString("tensanpham");
+                            Giasp= jsonObject.getInt("giasanpham");
+                            Hinhanhsp= jsonObject.getString("hinhanhsanpham");
+                            Motasp= jsonObject.getString("motasanpham");
+                            idlsp= jsonObject.getInt("idloaisanpham");
+                            mangsanpham.add(new Sanpham(ID,Tensp,Giasp,Hinhanhsp,Motasp,idlsp));
+                            tatcasanphamAdapter.notifyDataSetChanged();
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -107,6 +107,8 @@ public class LoaisanphamActivity extends AppCompatActivity
         requestQueue.add(jsonArrayRequest);
     }
 
+
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -120,7 +122,7 @@ public class LoaisanphamActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.loaisanpham_, menu);
+        getMenuInflater().inflate(R.menu.tatcasanpham, menu);
         return true;
     }
 
@@ -146,13 +148,14 @@ public class LoaisanphamActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-          Intent i = new Intent(LoaisanphamActivity.this, MainActivity.class);
-          startActivity(i);
-        } else if (id == R.id.nav_gallery) {
-            Intent i = new Intent(LoaisanphamActivity.this, TatcasanphamActivity.class);
+            // Handle the camera action
+            Intent i = new Intent(TatcasanphamActivity.this, MainActivity.class);
             startActivity(i);
+        } else if (id == R.id.nav_gallery) {
+            //tatcasp
         } else if (id == R.id.nav_slideshow) {
-            //loaisp
+            Intent i = new Intent(TatcasanphamActivity.this, LoaisanphamActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {
