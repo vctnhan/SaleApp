@@ -1,11 +1,14 @@
 package com.hanwool.saleapp;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -16,6 +19,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -62,7 +66,10 @@ public class LoaisanphamActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
         getLoaisp();
+        loadDataSanpham();
     }
+
+
     public void AnhXa(){
         lvPhoneBrand= findViewById(R.id.lvPhoneBrand);
         mangLoaisp = new ArrayList<>();
@@ -106,7 +113,12 @@ public class LoaisanphamActivity extends AppCompatActivity
         });
         requestQueue.add(jsonArrayRequest);
     }
+    public void GetDataSanpham(){
 
+    }
+    public void loadDataSanpham(){
+
+    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -116,6 +128,7 @@ public class LoaisanphamActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
