@@ -14,27 +14,51 @@
             android:name=".MainActivity"
             android:label="Trang chủ"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".splashScreen" />
-        <activity
-            android:name=".LoaisanphamActivity"
-            android:label="@string/title_activity_loaisanpham_"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity android:name=".splashScreen"
+            android:theme="@style/AppTheme.NoActionBar">>
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".BrandPhoneDetailsActivity.Iphone" />
+        <activity
+            android:name=".LoaisanphamActivity"
+            android:label="@string/title_activity_loaisanpham_"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
         <activity
             android:name=".TatcasanphamActivity"
             android:label="Tất cả sản phẩm"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".BrandPhoneDetailsActivity.Samsung" />
-        <activity android:name=".BrandPhoneDetailsActivity.Nokia" />
-        <activity android:name=".BrandPhoneDetailsActivity.Huawei" />
-        <activity android:name=".BrandPhoneDetailsActivity.Xiaomi" />
-        <activity android:name=".BrandPhoneDetailsActivity.Oppo"></activity>
+        <activity
+            android:name=".BrandPhoneDetailsActivity.Iphone"
+            android:label="Iphone"
+            android:theme="@style/MyActionBar" />
+        <activity
+            android:name=".BrandPhoneDetailsActivity.Samsung"
+            android:label="Samsung" />
+        <activity
+            android:name=".BrandPhoneDetailsActivity.Nokia"
+            android:label="Nokia" />
+        <activity
+            android:name=".BrandPhoneDetailsActivity.Huawei"
+            android:label="Huawei" />
+        <activity
+            android:name=".BrandPhoneDetailsActivity.Xiaomi"
+            android:label="Xiaomi" />
+        <activity
+            android:name=".BrandPhoneDetailsActivity.Oppo"
+            android:label="Oppo" />
+        <activity android:name=".RegisterActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity android:name=".ResultLogin"></activity>
     </application>
 
 </manifest>

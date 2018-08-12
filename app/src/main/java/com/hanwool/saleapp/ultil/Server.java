@@ -10,5 +10,7 @@ public class Server {
     public  static  String DuongdanHuawei = "http://" + localhost + "/server/getsphuawei.php";
     public  static  String DuongdanNokia = "http://" + localhost + "/server/getspnokia.php";
     public  static  String DuongdanOppo = "http://" + localhost + "/server/getspoppo.php";
+    public  static  String DuongdanLogin = "http://" + localhost + "/server/login.php";
+    public  static  String DuongdanRegister = "http://" + localhost + "/server/register.php";
 
 }
