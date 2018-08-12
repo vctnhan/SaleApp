@@ -40,7 +40,7 @@ public class LoginActivity extends AppCompatActivity {
      * URL : URL_LOGIN
      * param : KEY_USERNAME KEY_PASSWORD
      */
-
+    public static final String URL_LOGIN = "http://dev.androidcoban.com/blog/login.php";
     public static final String KEY_USERNAME = "username";
     public static final String KEY_PASSWORD = "password";
 
@@ -97,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (checkEditText(edtUserName) && checkEditText(edtPassWord)) {
             pDialog.show();
-            StringRequest requestLogin = new StringRequest(Request.Method.POST, Server.DuongdanLogin,
+            StringRequest requestLogin = new StringRequest(Request.Method.POST, URL_LOGIN,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
