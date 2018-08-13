@@ -14,9 +14,20 @@
             android:name=".MainActivity"
             android:label="Trang chủ"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".splashScreen"
-            android:theme="@style/AppTheme.NoActionBar">>
+        <activity
+            android:name=".splashScreen"
+            android:theme="@style/AppTheme.NoActionBar">
+            >
 
+        </activity>
+        <activity
+            android:name=".LoaisanphamActivity"
+            android:label="@string/title_activity_loaisanpham_"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TatcasanphamActivity"
+            android:label="Tất cả sản phẩm"
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,52 +35,51 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoaisanphamActivity"
-            android:label="@string/title_activity_loaisanpham_"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-        <activity
-            android:name=".TatcasanphamActivity"
-            android:label="Tất cả sản phẩm"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".BrandPhoneDetailsActivity.Iphone"
             android:label="Iphone"
-            android:theme="@style/MyActionBar"
-           android:parentActivityName=".LoaisanphamActivity" />
+            android:parentActivityName=".LoaisanphamActivity"
+            android:theme="@style/MyActionBar" />
         <activity
             android:name=".BrandPhoneDetailsActivity.Samsung"
             android:label="Samsung"
-            android:theme="@style/MyActionBar"
-            android:parentActivityName=".LoaisanphamActivity"/>
+            android:parentActivityName=".LoaisanphamActivity"
+            android:theme="@style/MyActionBar" />
         <activity
             android:name=".BrandPhoneDetailsActivity.Nokia"
             android:label="Nokia"
-            android:theme="@style/MyActionBar"
-            android:parentActivityName=".LoaisanphamActivity"/>
+            android:parentActivityName=".LoaisanphamActivity"
+            android:theme="@style/MyActionBar" />
         <activity
             android:name=".BrandPhoneDetailsActivity.Huawei"
             android:label="Huawei"
-            android:theme="@style/MyActionBar"
-            android:parentActivityName=".LoaisanphamActivity"/>
+            android:parentActivityName=".LoaisanphamActivity"
+            android:theme="@style/MyActionBar" />
         <activity
             android:name=".BrandPhoneDetailsActivity.Xiaomi"
             android:label="Xiaomi"
-            android:theme="@style/MyActionBar"
-            android:parentActivityName=".LoaisanphamActivity"/>
+            android:parentActivityName=".LoaisanphamActivity"
+            android:theme="@style/MyActionBar" />
         <activity
             android:name=".BrandPhoneDetailsActivity.Oppo"
             android:label="Oppo"
-            android:theme="@style/MyActionBar"
-            android:parentActivityName=".LoaisanphamActivity"/>
-        <activity android:name=".RegisterActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-        <activity android:name=".ResultLogin"></activity>
+            android:parentActivityName=".LoaisanphamActivity"
+            android:theme="@style/MyActionBar" />
+        <activity
+            android:name=".RegisterActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ResultLogin" />
+        <activity android:name=".ChitietsanphamActivity"
+            android:label="Thông tin sản phẩm"
+            android:theme="@style/AppTheme.NoActionBar"
+            />
+        <activity
+            android:name=".GiohangActivity"
+            android:label="Giỏ hàng"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".ThongtinkhachhangActivity"></activity>
     </application>
 
 </manifest>

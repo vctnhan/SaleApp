@@ -169,11 +169,14 @@ public class LoaisanphamActivity extends AppCompatActivity
         } else if (id == R.id.nav_slideshow) {
             //loaisp
         } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            //gio hang
+            Intent i = new Intent(this, GiohangActivity.class);
+            startActivity(i);
+            finish();
+        } else if (id == R.id.log_out) {
+            Intent i = new Intent(this, LoginActivity.class);
+            startActivity(i);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

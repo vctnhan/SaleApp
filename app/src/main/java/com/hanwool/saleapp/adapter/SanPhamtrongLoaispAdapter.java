@@ -1,6 +1,7 @@
 package com.hanwool.saleapp.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.hanwool.saleapp.ChitietsanphamActivity;
 import com.hanwool.saleapp.R;
 import com.hanwool.saleapp.modal.Sanpham;
 import com.squareup.picasso.Picasso;
@@ -67,6 +69,15 @@ public class SanPhamtrongLoaispAdapter extends RecyclerView.Adapter<SanPhamtrong
             txtAllPhonePrice= itemView.findViewById(R.id.txtAllPhonePrice);
             txtAllPhoneName= itemView.findViewById(R.id.txtAllPhoneName);
             txtAllPhoneDetail= itemView.findViewById(R.id.txtAllPhoneDetail);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, ChitietsanphamActivity.class);
+                    intent.putExtra("thongtinsanpham",arraySanpham.get(getPosition()));
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(intent);
+                }
+            });
 
         }
     }

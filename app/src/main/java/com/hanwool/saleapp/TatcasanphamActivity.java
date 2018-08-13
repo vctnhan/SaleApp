@@ -148,23 +148,28 @@ ArrayList<Sanpham> mangsanpham;
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            // trang chu
             Intent i = new Intent(TatcasanphamActivity.this, MainActivity.class);
             startActivity(i);
             finish();
         } else if (id == R.id.nav_gallery) {
             //tatcasp
         } else if (id == R.id.nav_slideshow) {
+            //loai sp
             Intent i = new Intent(TatcasanphamActivity.this, LoaisanphamActivity.class);
             startActivity(i);
             finish();
         } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            //gio hang
+            Intent i = new Intent(TatcasanphamActivity.this, LoaisanphamActivity.class);
+            startActivity(i);
+            finish();
+        } else if (id == R.id.log_out) {
+            Intent i = new Intent(this, LoginActivity.class);
+            startActivity(i);
+            finish();
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

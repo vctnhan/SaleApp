@@ -41,6 +41,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.hanwool.saleapp.adapter.SanphammoiAdapter;
+import com.hanwool.saleapp.modal.Giohang;
 import com.hanwool.saleapp.modal.Loaisp;
 import com.hanwool.saleapp.modal.Sanpham;
 import com.hanwool.saleapp.ultil.Server;
@@ -59,7 +60,7 @@ public class MainActivity extends AppCompatActivity
     ProgressBar progressBar;
     SliderLayout slideAds;
     RecyclerView lvNewPhone;
-
+    public static ArrayList<Giohang> manggiohang;
     ArrayList<Sanpham> mangsanpham;
     SanphammoiAdapter sanphammoiAdapter;
 
@@ -137,6 +138,12 @@ public class MainActivity extends AppCompatActivity
         lvNewPhone.setLayoutManager
                 (new GridLayoutManager(getApplicationContext(),2));
         lvNewPhone.setAdapter(sanphammoiAdapter);
+
+        if (manggiohang != null) {
+
+        } else {
+            manggiohang = new ArrayList<>();
+        }
     }
     private void getDulieuspmoi() {
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
@@ -274,19 +281,24 @@ public class MainActivity extends AppCompatActivity
             // Handle the camera action
             //trangchu
         } else if (id == R.id.nav_gallery) {
+            //tat ca sp
            Intent i = new Intent(MainActivity.this, TatcasanphamActivity.class);
             startActivity(i);
             finish();
         } else if (id == R.id.nav_slideshow) {
+            //loai sp
             Intent i = new Intent(MainActivity.this, LoaisanphamActivity.class);
             startActivity(i);
             finish();
         } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            //gio hang
+            Intent i = new Intent(this, GiohangActivity.class);
+            startActivity(i);
+            finish();
+        } else if (id == R.id.log_out) {
+            Intent i = new Intent(this, LoginActivity.class);
+            startActivity(i);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
