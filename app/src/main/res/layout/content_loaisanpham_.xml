@@ -15,12 +15,6 @@
 
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#FF99FF"
-            android:text="Hãng điện thoại"
-            android:gravity="center"/>
 
         <android.support.v7.widget.RecyclerView
 

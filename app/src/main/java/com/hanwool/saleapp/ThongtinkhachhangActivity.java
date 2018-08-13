@@ -16,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.load.data.StreamAssetPathFetcher;
+import com.hanwool.saleapp.modal.Account;
 import com.hanwool.saleapp.ultil.CheckConnection;
 import com.hanwool.saleapp.ultil.Server;
 
@@ -29,12 +30,15 @@ import java.util.Map;
 public class ThongtinkhachhangActivity extends AppCompatActivity {
     EditText edtTenkhachhang, edtDienthoai, edtEmail;
     Button btnXacnhan, btnTrove;
-
+    Account account;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thongtinkhachhang);
         Anhxa();
+        Intent intent = getIntent();
+//        account = new Account();
+//        account = (Account) intent.getSerializableExtra("email");
         btnTrove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -135,5 +139,6 @@ public class ThongtinkhachhangActivity extends AppCompatActivity {
         edtEmail = findViewById(R.id.edtEmail);
         btnXacnhan = findViewById(R.id.btnXacnhan);
         btnTrove = findViewById(R.id.btnTrove);
+
     }
 }

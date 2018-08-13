@@ -68,6 +68,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -114,9 +115,18 @@ public class LoginActivity extends AppCompatActivity {
                                     Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
 
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                                    intent.putExtra("login", account);
+//                                    Bundle bundle = new Bundle();
+//                                    bundle.putInt("login", account);
+//                                // đóng gói bundle vào intent
+//                                    intent.putExtras(bundle);
+//
+//                                    Bundle bundle = new Bundle();
+//                                    bundle.putString("ten", account.getUserName().toString());
+
+                                    intent.putExtra("email", account.getEmail());
                                     startActivity(intent);
                                     finish();
+
 
 
 

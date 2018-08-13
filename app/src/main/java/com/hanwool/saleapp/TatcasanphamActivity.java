@@ -161,7 +161,7 @@ ArrayList<Sanpham> mangsanpham;
             finish();
         } else if (id == R.id.nav_manage) {
             //gio hang
-            Intent i = new Intent(TatcasanphamActivity.this, LoaisanphamActivity.class);
+            Intent i = new Intent(TatcasanphamActivity.this, GiohangActivity.class);
             startActivity(i);
             finish();
         } else if (id == R.id.log_out) {

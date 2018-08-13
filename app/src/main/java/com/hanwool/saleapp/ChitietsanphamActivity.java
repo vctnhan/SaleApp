@@ -39,7 +39,7 @@ public class ChitietsanphamActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chitietsanpham);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         Anhxa();
@@ -104,7 +104,7 @@ public class ChitietsanphamActivity extends AppCompatActivity {
 //                Intent intent = new Intent(getApplicationContext(),GiohangActivity.class);
 //                startActivity(intent);;
                 Sanpham sanpham = (Sanpham) getIntent().getSerializableExtra("thongtinsanpham");
-                Toast.makeText(getApplicationContext(), "Bạn đã thêm "+ spinner.getSelectedItem()+" sản phẩm "+ sanpham.getTensp() +" vào giỏ hàng" , Toast.LENGTH_LONG ).show();
+                Toast.makeText(getApplicationContext(), "Bạn đã thêm "+ spinner.getSelectedItem()+"sản phẩm "+ sanpham.getTensp() +" vào giỏ hàng" , Toast.LENGTH_SHORT ).show();
             }
         });
     }
@@ -125,7 +125,7 @@ public class ChitietsanphamActivity extends AppCompatActivity {
         IdSanPham = sanpham.getidlsp();
         txtTen.setText(TenChiTiet);
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        txtGia.setText("Giá: " + decimalFormat.format(GiaChiTiet) + " Đ");
+        txtGia.setText("Giá: " + decimalFormat.format(GiaChiTiet) + " VNĐ");
         txtMota.setText(MotaChiTiet);
         Picasso.with(getApplicationContext()).load(HinhAnhChiTiet)
                 .placeholder(R.drawable.imgerror)

@@ -68,7 +68,7 @@ public class GiohangAdapter extends BaseAdapter{
         Giohang giohang = (Giohang) getItem(i);
         viewHoldder.txtTengiohang.setText(giohang.getTensp());
         DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-        viewHoldder.txtGiagiohang.setText(decimalFormat.format(giohang.getGiasp()) + "Đ");
+        viewHoldder.txtGiagiohang.setText(decimalFormat.format(giohang.getGiasp()) + "VNĐ");
         Picasso.with(context).load(giohang.getHinhsp())
                 .placeholder(R.drawable.imgerror)
                 .error(R.drawable.imgerror)
@@ -97,7 +97,7 @@ public class GiohangAdapter extends BaseAdapter{
                 long giamoinhat =(giaht * slmoinhat) / slht;
                 MainActivity.manggiohang.get(i).setGiasp(giamoinhat);
                 DecimalFormat decimalFormat = new DecimalFormat("###,###,###");
-                finalViewHoldder1.txtGiagiohang.setText(decimalFormat.format(giamoinhat) + "Đ");
+                finalViewHoldder1.txtGiagiohang.setText(decimalFormat.format(giamoinhat) + "VNĐ");
                 com.hanwool.saleapp.GiohangActivity.EventUltil();
                 if (slmoinhat > 9) {
                     finalViewHoldder2.btnPlus.setVisibility(View.INVISIBLE);

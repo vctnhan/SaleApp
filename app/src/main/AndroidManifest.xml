@@ -73,7 +73,7 @@
         <activity android:name=".ResultLogin" />
         <activity android:name=".ChitietsanphamActivity"
             android:label="Thông tin sản phẩm"
-            android:theme="@style/AppTheme.NoActionBar"
+            android:theme="@style/MyActionBar"
             />
         <activity
             android:name=".GiohangActivity"

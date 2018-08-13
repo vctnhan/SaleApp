@@ -44,25 +44,17 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp"
-            android:weightSum="2">
+            android:weightSum="10">
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="#FF99FF"
                     android:text="Tổng tiền : "
-                    android:textSize="30sp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="right|center">
+                    android:textSize="28sp" />
+
+
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -70,8 +62,9 @@
                     android:textColor="#FF99FF"
                     android:text="Giá trị"
                     android:textSize="28sp"
-                    android:id="@+id/txtTongtien"/>
-            </LinearLayout>
+                    android:id="@+id/txtTongtien"
+                    android:gravity="right"/>
+
         </LinearLayout>
     </LinearLayout>
 
@@ -83,7 +76,8 @@
         android:id="@+id/btnThanhtoan"
         android:textSize="20sp"
         android:background="@drawable/vien"
-        android:textColor="#FF99FF"/>
+        android:textColor="#FF99FF"
+        android:layout_marginBottom="5dp"/>
     <Button
         android:layout_width="match_parent"
         android:layout_height="0dp"

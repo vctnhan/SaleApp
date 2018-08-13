@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/menuGiohang"
-        android:icon="@drawable/ic_cart_24dp"
+        android:icon="@drawable/baseline_shopping_cart_white_18dp"
         android:title="Giỏ hàng"
         app:showAsAction="always"/>
 </menu>
