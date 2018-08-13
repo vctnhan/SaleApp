@@ -36,22 +36,33 @@
         <activity
             android:name=".BrandPhoneDetailsActivity.Iphone"
             android:label="Iphone"
-            android:theme="@style/MyActionBar" />
+            android:theme="@style/MyActionBar"
+           android:parentActivityName=".LoaisanphamActivity" />
         <activity
             android:name=".BrandPhoneDetailsActivity.Samsung"
-            android:label="Samsung" />
+            android:label="Samsung"
+            android:theme="@style/MyActionBar"
+            android:parentActivityName=".LoaisanphamActivity"/>
         <activity
             android:name=".BrandPhoneDetailsActivity.Nokia"
-            android:label="Nokia" />
+            android:label="Nokia"
+            android:theme="@style/MyActionBar"
+            android:parentActivityName=".LoaisanphamActivity"/>
         <activity
             android:name=".BrandPhoneDetailsActivity.Huawei"
-            android:label="Huawei" />
+            android:label="Huawei"
+            android:theme="@style/MyActionBar"
+            android:parentActivityName=".LoaisanphamActivity"/>
         <activity
             android:name=".BrandPhoneDetailsActivity.Xiaomi"
-            android:label="Xiaomi" />
+            android:label="Xiaomi"
+            android:theme="@style/MyActionBar"
+            android:parentActivityName=".LoaisanphamActivity"/>
         <activity
             android:name=".BrandPhoneDetailsActivity.Oppo"
-            android:label="Oppo" />
+            android:label="Oppo"
+            android:theme="@style/MyActionBar"
+            android:parentActivityName=".LoaisanphamActivity"/>
         <activity android:name=".RegisterActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".LoginActivity"

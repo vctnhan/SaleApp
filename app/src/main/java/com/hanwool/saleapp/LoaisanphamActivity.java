@@ -161,9 +161,11 @@ public class LoaisanphamActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
           Intent i = new Intent(LoaisanphamActivity.this, MainActivity.class);
           startActivity(i);
+            finish();
         } else if (id == R.id.nav_gallery) {
             Intent i = new Intent(LoaisanphamActivity.this, TatcasanphamActivity.class);
             startActivity(i);
+            finish();
         } else if (id == R.id.nav_slideshow) {
             //loaisp
         } else if (id == R.id.nav_manage) {

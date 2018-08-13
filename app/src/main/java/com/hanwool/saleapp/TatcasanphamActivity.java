@@ -151,11 +151,13 @@ ArrayList<Sanpham> mangsanpham;
             // Handle the camera action
             Intent i = new Intent(TatcasanphamActivity.this, MainActivity.class);
             startActivity(i);
+            finish();
         } else if (id == R.id.nav_gallery) {
             //tatcasp
         } else if (id == R.id.nav_slideshow) {
             Intent i = new Intent(TatcasanphamActivity.this, LoaisanphamActivity.class);
             startActivity(i);
+            finish();
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {

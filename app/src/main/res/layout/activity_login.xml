@@ -2,12 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_login"
+    android:background="@drawable/gradient"
     android:gravity="center"
     android:orientation="vertical"
     android:padding="10dp" >
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo"/>
 
     <LinearLayout
+        android:layout_marginTop="50dp"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -15,29 +20,30 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp" >
 
+
         <EditText
             android:id="@+id/editUsername"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/white"
+            android:background="@drawable/vien"
             android:hint="@string/login_lable1"
-            android:inputType="textEmailAddress"
             android:padding="10dp"
-            android:textColor="@color/input_login"
-            android:textColorHint="@color/input_login_hint" />
+            android:inputType="textCapWords"
+            android:textColor="@color/input_register"
+            android:textColorHint="@color/input_register_hint" />
 
         <EditText
             android:id="@+id/editPassword"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
-            android:background="@color/white"
+            android:background="@drawable/vien"
             android:hint="@string/login_lable2"
             android:inputType="textPassword"
             android:padding="10dp"
-            android:textColor="@color/input_login"
-            android:textColorHint="@color/input_login_hint" />
+            android:textColor="@color/input_register"
+            android:textColorHint="@color/input_register_hint" />
 
         <!-- Login Button -->
 
@@ -45,23 +51,40 @@
             android:id="@+id/btnLogin"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:background="@color/btn_login_bg"
+            android:layout_marginTop="10dip"
+            android:background="@null"
             android:text="@string/login_btn"
-            android:textColor="@color/btn_login" />
+            android:textStyle="bold"
+            android:textAllCaps="false"
+            android:textSize="24sp"
+            android:textColor="#FF99FF" />
 
         <!-- Link to Login Screen -->
 
-        <Button
-            android:id="@+id/btnRegister"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dip"
-            android:background="@null"
-            android:text="@string/register_btn"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:gravity="center|bottom">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bạn chưa có tài khoản? "
+                android:textSize="18sp"
+                />
+
+            <Button
+                android:id="@+id/btnRegister"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:background="@null"
+                android:text="Bấm vào đây"
+                android:textAllCaps="false"
+                android:textColor="#FF99FF"
+                android:textSize="18sp" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

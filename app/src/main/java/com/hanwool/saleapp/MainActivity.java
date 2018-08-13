@@ -93,9 +93,9 @@ public class MainActivity extends AppCompatActivity
             TextSliderView textSliderView = new TextSliderView(MainActivity.this);
 
             textSliderView
-                    .description("Samsung Galaxy " + name)
+                    .description (name)
                     .image(HashMapForURL.get( name))
-                    .setScaleType(BaseSliderView.ScaleType.CenterInside)
+                    .setScaleType(BaseSliderView.ScaleType.Fit)
                     .setOnSliderClickListener((BaseSliderView.OnSliderClickListener) this);
 
             textSliderView.bundle(new Bundle());
@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity
 
         slideAds.setCustomAnimation(new DescriptionAnimation());
 
-        slideAds.setDuration(3000);
+        slideAds.setDuration(4000);
 
         slideAds.addOnPageChangeListener((ViewPagerEx.OnPageChangeListener) MainActivity.this);
         //
@@ -190,7 +190,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onSliderClick(BaseSliderView slider) {
 
-        Toast.makeText(this,"Samsung Galaxy "+ slider.getBundle().get("extra")  , Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, slider.getBundle().get("extra").toString()  , Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -215,9 +215,9 @@ public class MainActivity extends AppCompatActivity
 
         HashMapForURL = new HashMap<String, String>();
 
-        HashMapForURL.put("s7", "https://firebasestorage.googleapis.com/v0/b/sale-app-bae86.appspot.com/o/Samsung%2Fs7.png?alt=media&token=7fce03f1-08ae-48f5-b4e5-432f0adbe10c");
-        HashMapForURL.put("s8", "https://firebasestorage.googleapis.com/v0/b/sale-app-bae86.appspot.com/o/Samsung%2Fs8.png?alt=media&token=033aa224-c484-4dd8-9fd0-22adc3603b73");
-        HashMapForURL.put("s9", "https://firebasestorage.googleapis.com/v0/b/sale-app-bae86.appspot.com/o/Samsung%2Fs9.jpg?alt=media&token=d6b93be0-8911-42c3-9434-6cef934a1df5");
+        HashMapForURL.put("PALM HEIGHTS", "http://www.zmientrung.com/wp-content/uploads/2018/03/banner-qua%CC%89ng-ca%CC%81o-ba%CC%82%CC%81t-%C4%91o%CC%A3%CC%82ng-sa%CC%89n-2-1.jpg");
+        HashMapForURL.put("MARC JACOBS", "https://mir-s3-cdn-cf.behance.net/project_modules/disp/321cbe21866251.56308c50540bc.jpg");
+        HashMapForURL.put("VIENTHONGA", "https://cdn1.vienthonga.vn/image/2016/8/3/100000_khaitruong-bac-lieu-1140x285-1.jpg");
 
     }
 
@@ -276,9 +276,11 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_gallery) {
            Intent i = new Intent(MainActivity.this, TatcasanphamActivity.class);
             startActivity(i);
+            finish();
         } else if (id == R.id.nav_slideshow) {
             Intent i = new Intent(MainActivity.this, LoaisanphamActivity.class);
             startActivity(i);
+            finish();
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_share) {

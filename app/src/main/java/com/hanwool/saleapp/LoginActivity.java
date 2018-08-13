@@ -116,6 +116,7 @@ public class LoginActivity extends AppCompatActivity {
                                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                                     intent.putExtra("login", account);
                                     startActivity(intent);
+                                    finish();
 
 
 
