@@ -41,6 +41,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.hanwool.saleapp.adapter.SanphammoiAdapter;
+import com.hanwool.saleapp.modal.Account;
 import com.hanwool.saleapp.modal.Giohang;
 import com.hanwool.saleapp.modal.Loaisp;
 import com.hanwool.saleapp.modal.Sanpham;
@@ -57,6 +58,8 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
     HashMap<String, String> HashMapForURL ;
     HashMap<String, Integer> HashMapForLocalRes ;
+    TextView txtTen;
+    Account account;
     ProgressBar progressBar;
     SliderLayout slideAds;
     RecyclerView lvNewPhone;
@@ -71,8 +74,12 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         AnhXa();
+        Intent intent = getIntent();
+        account = new Account();
+        account = (Account) intent.getSerializableExtra("login");
+        txtTen.setText(account.getUserName());
         progressBar= new ProgressBar(this);
-        Intent i = getIntent();
+
         ProgressBar progressBar =new ProgressBar(this);
         SliderLayout slideAds = findViewById(R.id.slideAds);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -138,6 +145,7 @@ public class MainActivity extends AppCompatActivity
         lvNewPhone.setLayoutManager
                 (new GridLayoutManager(getApplicationContext(),2));
         lvNewPhone.setAdapter(sanphammoiAdapter);
+         txtTen = findViewById(R.id.txtTen);
 
         if (manggiohang != null) {
 

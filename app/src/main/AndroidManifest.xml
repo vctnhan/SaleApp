@@ -18,7 +18,11 @@
             android:name=".splashScreen"
             android:theme="@style/AppTheme.NoActionBar">
             >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".LoaisanphamActivity"
@@ -28,11 +32,7 @@
             android:name=".TatcasanphamActivity"
             android:label="Tất cả sản phẩm"
             android:theme="@style/AppTheme.NoActionBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".BrandPhoneDetailsActivity.Iphone"

@@ -9,7 +9,7 @@ import com.hanwool.saleapp.modal.Account;
 
 public class ResultLogin extends AppCompatActivity {
     private TextView txtUserName;
-    private TextView txtEmail;
+//    private TextView txtEmail;
     private Account account;
 
     @Override
@@ -23,10 +23,10 @@ public class ResultLogin extends AppCompatActivity {
     }
 
     private void addControl() {
-        txtEmail = (TextView) findViewById(R.id.txtEmail);
-        txtUserName = (TextView) findViewById(R.id.txtUserName);
+//        txtEmail = (TextView) findViewById(R.id.txtEmail);
+        txtUserName = (TextView) findViewById(R.id.txtTen);
         /**Set value*/
         txtUserName.setText(account.getUserName());
-        txtEmail.setText(account.getEmail());
+//        txtEmail.setText(account.getEmail());
     }
 }
