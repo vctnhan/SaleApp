@@ -8,6 +8,15 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".TatcasanphamActivity"
     tools:showIn="@layout/app_bar_tatcasanpham">
+
+    <!--<SearchView-->
+        <!--android:id="@+id/search"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:iconifiedByDefault="false">-->
+
+        <!--<requestFocus />-->
+    <!--</SearchView>-->
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

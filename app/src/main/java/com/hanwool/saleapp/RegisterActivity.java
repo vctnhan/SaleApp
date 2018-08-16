@@ -39,7 +39,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button btnRegister;
     private Button btnLogin;
     private ProgressDialog pDialog;
-
+    Account account;
     public static final String REGISTER_URL = "http://dev.androidcoban.com/blog/register.php";
 
     public static final String KEY_USERNAME = "username";
@@ -76,13 +76,16 @@ public class RegisterActivity extends AppCompatActivity {
 
 
 
+
             }
         });
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+
                 startActivity(intent);
+
                 finish();
             }
         });
@@ -113,7 +116,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         if ( password.equals(repassword) && checkEditText(edtUserName) && checkEditText(edtPassWord) && checkEditText(edtEmail) && isValidEmail(email)  ) {
             pDialog.show();
-            StringRequest registerRequest = new StringRequest(Request.Method.POST,REGISTER_URL,
+            StringRequest registerRequest = new StringRequest(Request.Method.POST,Server.DuongdanRegister,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
@@ -129,7 +132,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_LONG).show();
                                     //Start LoginActivity
                                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                                    intent.putExtra("register", account);
+                                    intent.putExtra("register", account.getUserName().toString());
                                     startActivity(intent);
                                 } else {
                                     message = jsonObject.getString("message");

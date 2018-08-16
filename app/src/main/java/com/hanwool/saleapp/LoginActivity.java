@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private Button btnRegister;
     private ProgressDialog pDialog;
-    private Account account;
+    Account account;
     /**
      * URL : URL_LOGIN
      * param : KEY_USERNAME KEY_PASSWORD
@@ -81,11 +81,16 @@ public class LoginActivity extends AppCompatActivity {
         pDialog = new ProgressDialog(this);
         pDialog.setMessage("Đang đăng nhập");
         pDialog.setCanceledOnTouchOutside(false);
-//        account= new Account();
-//        Intent i = getIntent();
-//        Account  account = (Account) i.getSerializableExtra("register");
-//        edtUserName.setText(account.getUserName().toString());
-//        edtPassWord.setText(account.getPassword().toString());
+
+        Intent i = getIntent();
+//        String user = (String) i.getSerializableExtra("register");
+//        if (account != null) {
+//            edtUserName.setText(user.toString());
+//
+//        }{
+//
+//
+//        }
     }
 
     /**
@@ -98,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (checkEditText(edtUserName) && checkEditText(edtPassWord)) {
             pDialog.show();
-            StringRequest requestLogin = new StringRequest(Request.Method.POST, URL_LOGIN,
+            StringRequest requestLogin = new StringRequest(Request.Method.POST, Server.DuongdanLogin,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {

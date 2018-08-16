@@ -65,8 +65,10 @@ public class GiohangActivity extends AppCompatActivity
         btnTieptucmua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-                startActivity(intent);
+//                Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+//                startActivity(intent);
+//                finish();
+                onBackPressed();
             }
         });
         btnThanhtoan.setOnClickListener(new View.OnClickListener() {
@@ -75,6 +77,7 @@ public class GiohangActivity extends AppCompatActivity
                 if (MainActivity.manggiohang.size() > 0) {
                     Intent intent = new Intent(getApplicationContext(),ThongtinkhachhangActivity.class);
                     startActivity(intent);
+                    finish();
                 } else {
                     CheckConnection.ShowToast_Short(getApplicationContext(),"Giỏ hàng của bạn chưa có sản phẩm đẻ thanh toán");
                 }

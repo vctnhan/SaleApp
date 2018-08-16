@@ -18,14 +18,19 @@ import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 
 public class TatcasanphamAdapter extends RecyclerView.Adapter<TatcasanphamAdapter.ItemHolder> {
     Context context;
     ArrayList<Sanpham> arraySanpham;
     ProgressBar progressBar;
+    private List<Sanpham> listSanpham = null;
+
     public TatcasanphamAdapter(Context context, ArrayList<Sanpham> arraySanpham) {
         this.context = context;
         this.arraySanpham = arraySanpham;
+
     }
 
     @Override
@@ -81,4 +86,5 @@ public class TatcasanphamAdapter extends RecyclerView.Adapter<TatcasanphamAdapte
 
         }
     }
+
 }

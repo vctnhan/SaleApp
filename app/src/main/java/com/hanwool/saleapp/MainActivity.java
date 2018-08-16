@@ -304,7 +304,7 @@ public class MainActivity extends AppCompatActivity
             //gio hang
             Intent i = new Intent(this, GiohangActivity.class);
             startActivity(i);
-            finish();
+
         } else if (id == R.id.log_out) {
             Intent i = new Intent(this, LoginActivity.class);
             startActivity(i);
