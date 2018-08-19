@@ -2,13 +2,12 @@ package com.hanwool.saleapp;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 
+import android.support.v7.widget.SearchView;
+import android.text.TextUtils;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,8 +17,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ListView;
-import android.widget.SearchView;
+import android.widget.Button;
+
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -27,6 +26,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
 import com.hanwool.saleapp.adapter.TatcasanphamAdapter;
+import com.hanwool.saleapp.interfaceToCompare.SoSanhGiaComporator;
+import com.hanwool.saleapp.interfaceToCompare.SoSanhTenComporator;
+import com.hanwool.saleapp.modal.Account;
 import com.hanwool.saleapp.modal.Sanpham;
 import com.hanwool.saleapp.ultil.Server;
 
@@ -35,17 +37,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 
 public class TatcasanphamActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
-    SearchView editsearch;
+        implements NavigationView.OnNavigationItemSelectedListener, SearchView.OnQueryTextListener {
+    SearchView searchView;
 RecyclerView lvAllPhone;
 TatcasanphamAdapter tatcasanphamAdapter;
 ArrayList<Sanpham> mangsanpham;
-    List<Sanpham> listSanpham;
-    String[] listTensp,listGiasp,listMotasp;
-    Sanpham sanpham;
+    ArrayList<Account> mangAccount;
+Button btnAsc;
+private boolean ascending = true;
+
 
 
     @Override
@@ -71,13 +74,14 @@ ArrayList<Sanpham> mangsanpham;
         lvAllPhone= findViewById(R.id.lvAllPhone);
         mangsanpham= new ArrayList<>();
         tatcasanphamAdapter = new TatcasanphamAdapter(getApplicationContext(),mangsanpham);
-        //
+        btnAsc= findViewById(R.id.btnAsc);
         lvAllPhone.setHasFixedSize(true);
         lvAllPhone.setLayoutManager
                 (new LinearLayoutManager(this));
         lvAllPhone.setAdapter(tatcasanphamAdapter);
 
-//        editsearch =  findViewById(R.id.search);
+
+
        
 
     }
@@ -137,23 +141,57 @@ ArrayList<Sanpham> mangsanpham;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.search_main, menu);
+        MenuItem itemSearch = menu.findItem(R.id.action_search);
+        searchView = (SearchView) itemSearch.getActionView();
+        //set OnQueryTextListener cho search view để thực hiện search theo text
+
+        searchView.setQueryHint("Tìm kiếm...");
+        searchView.setOnQueryTextListener(this);
         return true;
     }
+    public void sortByAsc(View view) {
 
+       processSortGia(ascending);
+        ascending = !ascending;
+    }
+    public void sortByAlpha(View view) {
+        processSortTen(ascending);
+        ascending = !ascending;
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
-        switch (item.getItemId()) {
-            case R.id.menuGiohang:
-                Intent intent = new Intent(getApplicationContext(),GiohangActivity.class);
-                startActivity(intent);
-        }
+//        switch (item.getItemId()) {
+//            case R.id.menuGiohang:
+//                Intent intent = new Intent(getApplicationContext(),GiohangActivity.class);
+//                startActivity(intent);
+//        }
 
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+
+        if (TextUtils.isEmpty(s)){
+            tatcasanphamAdapter.getFilter().filter("");
+//            onRestart();
+
+
+        }else {
+            tatcasanphamAdapter.getFilter().filter(s.toString());
+
+
+        }
+        return true;
+    }
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -190,4 +228,43 @@ ArrayList<Sanpham> mangsanpham;
     }
 
 
+
+
+
+
+    private void processSortGia(boolean asc)
+    {
+        //SORT ARRAY ASCENDING AND DESCENDING
+        if (asc)
+        {
+            Collections.sort(mangsanpham, new SoSanhGiaComporator());
+        }
+        else
+        {
+            Collections.reverse(mangsanpham);
+        }
+        tatcasanphamAdapter = new TatcasanphamAdapter(getApplicationContext(),mangsanpham);
+      lvAllPhone.setAdapter(tatcasanphamAdapter);
+//        tatcasanphamAdapter.notifyDataSetChanged();
+
+    }
+
+
+    private void processSortTen(boolean asc)
+    {
+        //SORT ARRAY ASCENDING AND DESCENDING
+        if (asc)
+        {
+            Collections.sort(mangsanpham);
+
+        }
+        else
+        {
+            Collections.reverse(mangsanpham);
+        }
+        tatcasanphamAdapter = new TatcasanphamAdapter(getApplicationContext(),mangsanpham);
+        lvAllPhone.setAdapter(tatcasanphamAdapter);
+//        tatcasanphamAdapter.notifyDataSetChanged();
+
+    }
 }

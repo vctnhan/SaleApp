@@ -10,29 +10,16 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <meta-data
-            android:name="android.app.default_searchable"
-            android:value=".SearchTestActivity" />
-        <activity android:name=".SearchTestActivity" android:launchMode="singleTop">
-
-        </activity>
         <activity
             android:name=".MainActivity"
             android:label="Trang chủ"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
         <activity
             android:name=".splashScreen"
             android:theme="@style/AppTheme.NoActionBar">
             >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-
-            </intent-filter>
-
         </activity>
         <activity
             android:name=".LoaisanphamActivity"
@@ -41,9 +28,7 @@
         <activity
             android:name=".TatcasanphamActivity"
             android:label="Tất cả sản phẩm"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".BrandPhoneDetailsActivity.Iphone"
             android:label="Iphone"
@@ -90,7 +75,12 @@
             android:label="Giỏ hàng"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ThongtinkhachhangActivity" />
+        <activity
+            android:name=".QuanlydonhangActivity_Admin"
+            android:label="Đơn hàng"
+            android:theme="@style/AppTheme.NoActionBar">
 
+        </activity>
     </application>
 
 </manifest>

@@ -18,4 +18,5 @@
     <string name="register_email">Email</string>
     <string name="register_btn">Đăng Ký</string>
     <string name="title_activity_giohang">GiohangActivity</string>
+    <string name="title_activity_quanlydonhang__admin">QuanlydonhangActivity_Admin</string>
 </resources>

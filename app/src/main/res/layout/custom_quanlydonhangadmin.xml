@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:layout_gravity="center"
+    android:orientation="horizontal"
+
+
+    android:gravity="fill_horizontal"
+    android:background="@drawable/vien">
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:text="1"
+            android:textStyle="bold"
+            android:textColor="@color/hong"
+            android:layout_marginLeft="5dp"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:id="@+id/txtId"/>
+        <TextView
+            android:id="@+id/txtTenKH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tên khách hàng"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/hong"
+            android:layout_gravity="center"
+
+           />
+        <TextView
+            android:id="@+id/txtSdtKH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Số điện thoại"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/hong"
+            android:layout_gravity="center"
+           />
+        <TextView
+            android:id="@+id/txtEmailKH"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/hong"
+            android:layout_gravity="center"
+           />
+
+
+
+
+</LinearLayout>

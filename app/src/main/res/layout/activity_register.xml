@@ -85,7 +85,7 @@
             android:textStyle="bold"
             android:textAllCaps="false"
             android:textSize="24sp"
-            android:textColor="#FF99FF" />
+            android:textColor="@color/hong" />
 
 
         <!-- Link to Login Screen -->

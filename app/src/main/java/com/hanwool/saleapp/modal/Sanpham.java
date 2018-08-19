@@ -1,8 +1,10 @@
 package com.hanwool.saleapp.modal;
 
-import java.io.Serializable;
+import android.support.annotation.NonNull;
 
-public class Sanpham implements Serializable {
+import java.io.Serializable;
+//Comparable<Sanpham>
+public class Sanpham implements Serializable, Comparable<Sanpham> {
     public  int id;
     public  String Tensp ;
     public Integer Giasp;
@@ -65,4 +67,26 @@ public class Sanpham implements Serializable {
     public void setidlsp(int idlsp) {
         this.idlsp = idlsp;
     }
+
+    @Override
+    public int compareTo(@NonNull Sanpham sanpham) {
+        return  Tensp.compareTo(sanpham.Tensp);
+    }
+
+
+//    @Override
+//    public int compareTo(@NonNull Sanpham sanpham) {
+//        return 0;
+//    }
+
+//    @Override
+//    public int compareTo(@NonNull Sanpham sanpham) {
+//        if (Giasp == sanpham.Giasp)
+//            return 0;
+//        else if (Giasp > sanpham.Giasp)
+//            return 1;
+//        else
+//            return -1;
+//    }
+
 }
