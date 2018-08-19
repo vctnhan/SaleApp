@@ -19,4 +19,5 @@
     <string name="register_btn">Đăng Ký</string>
     <string name="title_activity_giohang">GiohangActivity</string>
     <string name="title_activity_quanlydonhang__admin">QuanlydonhangActivity_Admin</string>
+    <string name="title_activity_quanlytaikhoan__admin">Quanlytaikhoan_AdminActivity</string>
 </resources>

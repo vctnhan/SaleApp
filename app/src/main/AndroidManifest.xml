@@ -70,7 +70,6 @@
         <activity
             android:name=".LoginActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ResultLogin" />
         <activity
             android:name=".ChitietsanphamActivity"
             android:label="Thông tin sản phẩm"
@@ -81,7 +80,13 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".ThongtinkhachhangActivity" />
         <activity
-            android:name=".QuanlydonhangActivity_Admin"
+            android:name=".Quanlydonhang_AdminActivity"
+            android:label="Đơn hàng"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity
+            android:name=".Quanlytaikhoan_AdminActivity"
             android:label="Đơn hàng"
             android:theme="@style/AppTheme.NoActionBar">
 

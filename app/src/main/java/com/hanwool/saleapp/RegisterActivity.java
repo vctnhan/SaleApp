@@ -125,7 +125,7 @@ public class RegisterActivity extends AppCompatActivity {
                             try {
                                 JSONObject jsonObject = new JSONObject(response);
                                 if ( jsonObject.getInt("success") == 1 ) {
-                                    Account account = new Account();
+
                                     account.setUserName(jsonObject.getString("user_name"));
                                     account.setEmail(jsonObject.getString("email"));
                                     message = jsonObject.getString("message");

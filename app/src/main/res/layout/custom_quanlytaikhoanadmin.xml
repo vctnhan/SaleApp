@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
- >
+    >
 
     <LinearLayout
 
@@ -12,18 +12,19 @@
         android:layout_height="150dp"
         android:orientation="horizontal"
         android:weightSum="3">
-       <TextView
-           android:id="@+id/txtId"
-           android:layout_width="20dp"
-           android:layout_height="match_parent"
-           android:text="1"
-           android:textSize="18sp"
-           android:gravity="center"/>
+        <TextView
+            android:id="@+id/txtId"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
+            android:text="1"
+            android:textSize="18sp"
+            android:gravity="center"/>
         <LinearLayout
             android:layout_width="2dp"
             android:layout_height="match_parent"
             android:background="@drawable/vien"></LinearLayout>
         <LinearLayout
+
             android:layout_marginLeft="10dp"
             android:layout_width="0dp"
             android:layout_height="match_parent"
@@ -33,13 +34,14 @@
             android:orientation="vertical"
             >
             <TextView
+
                 android:textColor="#fc0a65ba"
                 android:layout_width="wrap_content"
                 android:layout_height="45dp"
                 android:textSize="18sp"
                 android:text="Tên sản phẩm"
-                android:gravity="center_vertical"
-                android:id="@+id/txtTenKH"
+                android:gravity="center"
+                android:id="@+id/txtUsername"
                 android:textStyle="bold"
                 android:layout_margin="5dp"/>
 
@@ -50,29 +52,19 @@
                 android:layout_height="22dp"
                 android:textSize="16sp"
                 android:text="Giá sản phẩm"
-                android:id="@+id/txtSdtKH"
+                android:id="@+id/txtEmailKH"
                 android:textStyle="bold"
                 android:layout_marginRight="5dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginBottom="5dp"/>
-            <TextView
 
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="Mô tả sản phẩm"
-                android:id="@+id/txtEmailKH"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-
-                />
 
 
         </LinearLayout>
     </LinearLayout>
-<LinearLayout
-    android:layout_width="10000dp"
-    android:layout_height="2dp"
-    android:background="@drawable/vien"></LinearLayout>
+    <LinearLayout
+        android:layout_width="10000dp"
+        android:layout_height="2dp"
+        android:background="@drawable/vien"></LinearLayout>
 
 </LinearLayout>

@@ -19,6 +19,7 @@ import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.hanwool.saleapp.modal.Account;
+import com.hanwool.saleapp.modal.AccountLogin;
 import com.hanwool.saleapp.ultil.Server;
 
 import org.json.JSONException;
@@ -35,7 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin;
     private Button btnRegister;
     private ProgressDialog pDialog;
-    Account account;
+
     /**
      * URL : URL_LOGIN
      * param : KEY_USERNAME KEY_PASSWORD
@@ -112,8 +113,8 @@ public class LoginActivity extends AppCompatActivity {
                             try {
                                 JSONObject jsonObject = new JSONObject(response);
                                 if (jsonObject.getInt("success") == 1) {
-                                    Account account = new Account();
 
+                                    AccountLogin account= new AccountLogin();
                                     account.setUserName(jsonObject.getString("user_name"));
                                     account.setEmail(jsonObject.getString("email"));
                                     message = "Đăng nhập thành công";

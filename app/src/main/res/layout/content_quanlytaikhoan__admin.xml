@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".Quanlydonhang_AdminActivity"
-    tools:showIn="@layout/app_bar_quanlydonhang_activity__admin">
-<android.support.v7.widget.RecyclerView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:id="@+id/lvAllOrder"></android.support.v7.widget.RecyclerView>
+    tools:context=".Quanlytaikhoan_AdminActivity"
+    tools:showIn="@layout/app_bar_quanlytaikhoan__admin">
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/lvAllAccount"></android.support.v7.widget.RecyclerView>
 </android.support.constraint.ConstraintLayout>

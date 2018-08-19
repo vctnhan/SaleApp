@@ -5,20 +5,16 @@ import java.io.Serializable;
 /**
  * Created by LynkMieu on 20/08/2016.
  */
-public class Account implements Serializable {
+public class AccountLogin implements Serializable {
     private int id;
     private String userName;
     private String fullName;
     private String email;
     private String password;
 
-    public Account(int id, String userName, String fullName, String email, String password) {
-        this.id = id;
-        this.userName = userName;
-        this.fullName = fullName;
-        this.email = email;
-        this.password = password;
-    }
+ public void AccountLogin(){
+
+ }
 //        public Account(String userName, String fullName, String email, String password) {
 //        this.userName = userName;
 //        this.fullName = fullName;

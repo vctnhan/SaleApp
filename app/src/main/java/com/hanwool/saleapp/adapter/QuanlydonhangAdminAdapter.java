@@ -1,49 +1,43 @@
 package com.hanwool.saleapp.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.hanwool.saleapp.ChitietsanphamActivity;
 import com.hanwool.saleapp.R;
 import com.hanwool.saleapp.modal.Donhang;
-import com.hanwool.saleapp.modal.Sanpham;
-import com.squareup.picasso.Picasso;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class QuanlydonhangAdapterAdmin extends RecyclerView.Adapter<QuanlydonhangAdapterAdmin.ItemHolder> {
+public class QuanlydonhangAdminAdapter extends RecyclerView.Adapter<QuanlydonhangAdminAdapter.ItemHolder> {
     Context context;
     ArrayList<Donhang> arrayDonhang;
     ProgressBar progressBar;
-    public QuanlydonhangAdapterAdmin(Context context, ArrayList<Donhang> arrayDonhang) {
+    public QuanlydonhangAdminAdapter(Context context, ArrayList<Donhang> arrayDonhang) {
         this.context = context;
         this.arrayDonhang = arrayDonhang;
     }
 
     @Override
-    public QuanlydonhangAdapterAdmin.ItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public QuanlydonhangAdminAdapter.ItemHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.custom_quanlydonhangadmin,null);
-        QuanlydonhangAdapterAdmin.ItemHolder itemHolder= new QuanlydonhangAdapterAdmin.ItemHolder(v);
+        QuanlydonhangAdminAdapter.ItemHolder itemHolder= new QuanlydonhangAdminAdapter.ItemHolder(v);
 
         return itemHolder;
     }
 
     @Override
-    public void onBindViewHolder(QuanlydonhangAdapterAdmin.ItemHolder holder, int position) {
+    public void onBindViewHolder(QuanlydonhangAdminAdapter.ItemHolder holder, int position) {
         Donhang donhang = arrayDonhang.get(position);
-//        holder.txtId.setText(donhang.getIddh());
+       holder.txtId.setText(String.valueOf(donhang.getIddh()));
         holder.txtTenKH.setText(donhang.getTenKH());
-        DecimalFormat decimalFormat= new DecimalFormat("###,###,###");
+        DecimalFormat decimalFormat= new DecimalFormat("#########");
         holder.txtSdtKH.setText(decimalFormat.format(donhang.getSdtKH()));
         holder.txtEmailKH.setText(donhang.getEmailKH());
 

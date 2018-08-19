@@ -14,18 +14,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ListView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.hanwool.saleapp.adapter.GiohangAdapter;
-import com.hanwool.saleapp.adapter.QuanlydonhangAdapterAdmin;
-import com.hanwool.saleapp.adapter.SanPhamtrongLoaispAdapter;
+import com.hanwool.saleapp.adapter.QuanlydonhangAdminAdapter;
+import com.hanwool.saleapp.adapter.QuanlytaikhoanAdminAdapter;
+import com.hanwool.saleapp.modal.Account;
 import com.hanwool.saleapp.modal.Donhang;
-import com.hanwool.saleapp.modal.Sanpham;
 import com.hanwool.saleapp.ultil.Server;
 
 import org.json.JSONArray;
@@ -34,19 +32,19 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class QuanlydonhangActivity_Admin extends AppCompatActivity
+public class Quanlytaikhoan_AdminActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-RecyclerView lvAllOrder;
-ArrayList<Donhang> mangDonhang;
-QuanlydonhangAdapterAdmin quanlydonhangAdapterAdmin;
+    RecyclerView lvAllAccount;
+    ArrayList<Account> mangaccount;
+    QuanlytaikhoanAdminAdapter quanlytaikhoanAdminAdapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quanlydonhang__admin);
+        setContentView(R.layout.activity_quanlytaikhoan__admin);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         Anhxa();
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -59,35 +57,39 @@ QuanlydonhangAdapterAdmin quanlydonhangAdapterAdmin;
     }
 
     private void Anhxa() {
-        lvAllOrder= findViewById(R.id.lvAllOrder);
-        mangDonhang= new ArrayList<>();
-        quanlydonhangAdapterAdmin = new QuanlydonhangAdapterAdmin(getApplicationContext(),mangDonhang);
+        lvAllAccount= findViewById(R.id.lvAllAccount);
+        mangaccount= new ArrayList<>();
+        quanlytaikhoanAdminAdapter = new QuanlytaikhoanAdminAdapter(getApplicationContext(),mangaccount);
         //
-        lvAllOrder.setHasFixedSize(true);
-        lvAllOrder.setLayoutManager
+        lvAllAccount.setHasFixedSize(true);
+        lvAllAccount.setLayoutManager
                 (new LinearLayoutManager(this));
-        lvAllOrder.setAdapter(quanlydonhangAdapterAdmin);
-        getDonhang();
+        lvAllAccount.setAdapter(quanlytaikhoanAdminAdapter);
+        getTaikhoan();
     }
-    private void getDonhang() {
+
+    private void getTaikhoan() {
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Server.DuongdanLayDonhangAdmin, new Response.Listener<JSONArray>() {
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Server.DuongdanLayTaikhoanAdmin, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
                 if (response != null){
                     int ID = 0;
                     String TenKH = "";
-                    Integer SdtKH= 0;
+                    String Username= "";
+                    String Password= "";
                     String EmailKH= "";
+
                     for (int i =0; i<response.length(); i++){
                         try {
                             JSONObject jsonObject = response.getJSONObject(i);
-                            ID = jsonObject.getInt("id");
+                            ID = jsonObject.getInt("user_id");
                             TenKH= jsonObject.getString("tenkhachhang");
-                            SdtKH= jsonObject.getInt("sodienthoai");
+                            Username= jsonObject.getString("user_name");
+                            Password = jsonObject.getString("password");
                             EmailKH= jsonObject.getString("email");
-                            mangDonhang.add(new Donhang(ID,TenKH,SdtKH,EmailKH));
-                            quanlydonhangAdapterAdmin.notifyDataSetChanged();
+                            mangaccount.add(new Account(ID,Username,TenKH,EmailKH,Password));
+                            quanlytaikhoanAdminAdapter.notifyDataSetChanged();
 
 
                         } catch (JSONException e) {
@@ -106,7 +108,6 @@ QuanlydonhangAdapterAdmin quanlydonhangAdapterAdmin;
         requestQueue.add(jsonArrayRequest);
     }
 
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -120,7 +121,7 @@ QuanlydonhangAdapterAdmin quanlydonhangAdapterAdmin;
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.quanlydonhang_activity__admin, menu);
+        getMenuInflater().inflate(R.menu.quanlytaikhoan__admin, menu);
         return true;
     }
 
