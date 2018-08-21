@@ -1,5 +1,6 @@
 package com.hanwool.saleapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -61,6 +62,7 @@ QuanlydonhangAdminAdapter quanlydonhangAdapterAdmin;
                 (new LinearLayoutManager(this));
         lvAllOrder.setAdapter(quanlydonhangAdapterAdmin);
         getDonhang();
+
     }
     private void getDonhang() {
         RequestQueue requestQueue= Volley.newRequestQueue(getApplicationContext());
@@ -81,6 +83,7 @@ QuanlydonhangAdminAdapter quanlydonhangAdapterAdmin;
                             EmailKH= jsonObject.getString("email");
                             mangDonhang.add(new Donhang(ID,TenKH,SdtKH,EmailKH));
                             quanlydonhangAdapterAdmin.notifyDataSetChanged();
+
 
 
                         } catch (JSONException e) {
@@ -139,7 +142,9 @@ QuanlydonhangAdminAdapter quanlydonhangAdapterAdmin;
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+          Intent i = new Intent(this, Quanlytaikhoan_AdminActivity.class);
+          startActivity(i);
+          finish();
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {

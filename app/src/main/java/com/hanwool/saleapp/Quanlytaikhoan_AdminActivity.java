@@ -1,5 +1,6 @@
 package com.hanwool.saleapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -149,7 +150,9 @@ public class Quanlytaikhoan_AdminActivity extends AppCompatActivity
         if (id == R.id.nav_camera) {
             // Handle the camera action
         } else if (id == R.id.nav_gallery) {
-
+            Intent i = new Intent(this, Quanlydonhang_AdminActivity.class);
+            startActivity(i);
+            finish();
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {

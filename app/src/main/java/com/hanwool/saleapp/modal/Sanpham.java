@@ -4,7 +4,7 @@ import android.support.annotation.NonNull;
 
 import java.io.Serializable;
 //Comparable<Sanpham>
-public class Sanpham implements Serializable, Comparable<Sanpham> {
+public class Sanpham implements Serializable {
     public  int id;
     public  String Tensp ;
     public Integer Giasp;
@@ -68,10 +68,11 @@ public class Sanpham implements Serializable, Comparable<Sanpham> {
         this.idlsp = idlsp;
     }
 
-    @Override
-    public int compareTo(@NonNull Sanpham sanpham) {
-        return  Tensp.compareTo(sanpham.Tensp);
-    }
+
+//    @Override
+//    public int compareTo(@NonNull Sanpham sanpham) {
+//        return  Tensp.compareTo(sanpham.Tensp);
+//    }
 
 
 //    @Override

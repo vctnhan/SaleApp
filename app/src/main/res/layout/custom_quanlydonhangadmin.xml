@@ -6,19 +6,25 @@
  >
 
     <LinearLayout
+        android:layout_width="10000dp"
+        android:layout_height="2dp"
+        android:background="@drawable/vien"></LinearLayout>
+    <LinearLayout
 
 
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:weightSum="3">
        <TextView
            android:id="@+id/txtId"
-           android:layout_width="20dp"
+           android:layout_width="50dp"
            android:layout_height="match_parent"
            android:text="1"
-           android:textSize="18sp"
-           android:gravity="center"/>
+          android:textSize="16sp"
+           android:gravity="center"
+           android:textColor="#ec0690"
+           android:textStyle="bold"/>
         <LinearLayout
             android:layout_width="2dp"
             android:layout_height="match_parent"
@@ -32,47 +38,83 @@
             android:gravity="left"
             android:orientation="vertical"
             >
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:textColor="#fc0a65ba"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                   android:textSize="16sp"
+                    android:text="Tên khách hàng:"
+                    android:gravity="center_vertical"
+                    android:textStyle="bold"
+                    android:layout_margin="5dp"/>
             <TextView
                 android:textColor="#fc0a65ba"
                 android:layout_width="wrap_content"
-                android:layout_height="45dp"
-                android:textSize="18sp"
-                android:text="Tên sản phẩm"
+               android:layout_height="25dp"
+               android:textSize="16sp"
+                android:text="Tên khách hàng:"
                 android:gravity="center_vertical"
                 android:id="@+id/txtTenKH"
                 android:textStyle="bold"
                 android:layout_margin="5dp"/>
+            </LinearLayout>
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <TextView
+        android:gravity="center"
+        android:textColor="#ec0690"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:textSize="16sp"
+        android:text="Số điện thoại:     "
+        android:textStyle="bold"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"/>
+    <TextView
+        android:gravity="center"
+        android:textColor="#ec0690"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:textSize="16sp"
+        android:text="Giá sản phẩm"
+        android:id="@+id/txtSdtKH"
+        android:textStyle="bold"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"/>
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <TextView
 
-            <TextView
-                android:gravity="center"
-                android:textColor="#ec0690"
-                android:layout_width="wrap_content"
-                android:layout_height="22dp"
-                android:textSize="16sp"
-                android:text="Giá sản phẩm"
-                android:id="@+id/txtSdtKH"
-                android:textStyle="bold"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="5dp"
-                android:layout_marginBottom="5dp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Email:"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold"
+            />
             <TextView
 
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="Mô tả sản phẩm"
+               android:textSize="16sp"
+                android:text="Email"
                 android:id="@+id/txtEmailKH"
                 android:layout_marginRight="5dp"
                 android:layout_marginLeft="5dp"
-
+                android:textStyle="bold"
                 />
-
+    </LinearLayout>
 
         </LinearLayout>
     </LinearLayout>
-<LinearLayout
-    android:layout_width="10000dp"
-    android:layout_height="2dp"
-    android:background="@drawable/vien"></LinearLayout>
 
 </LinearLayout>

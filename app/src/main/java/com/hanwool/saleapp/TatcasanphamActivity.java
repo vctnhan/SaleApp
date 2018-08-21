@@ -255,7 +255,7 @@ private boolean ascending = true;
         //SORT ARRAY ASCENDING AND DESCENDING
         if (asc)
         {
-            Collections.sort(mangsanpham);
+            Collections.sort(mangsanpham,new SoSanhTenComporator());
 
         }
         else
