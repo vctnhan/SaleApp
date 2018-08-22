@@ -8,6 +8,22 @@
     tools:context=".Quanlydonhang_AdminActivity"
     tools:showIn="@layout/app_bar_quanlydonhang_activity__admin"
     android:orientation="vertical">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="32sp"
+            android:text="Không có đơn hàng nào"
+            android:id="@+id/ifNoData"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:id="@+id/ifHasData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -31,8 +47,9 @@
         android:layout_height="match_parent"
         android:background="@drawable/vien"></LinearLayout>
 <android.support.v7.widget.RecyclerView
-    android:layout_marginTop="34dp"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/lvAllOrder"></android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </FrameLayout>
 </android.support.constraint.ConstraintLayout>

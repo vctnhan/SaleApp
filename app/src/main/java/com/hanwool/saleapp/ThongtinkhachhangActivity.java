@@ -16,6 +16,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.load.data.StreamAssetPathFetcher;
+import com.hanwool.saleapp.Key.Constants;
 import com.hanwool.saleapp.modal.Account;
 import com.hanwool.saleapp.ultil.CheckConnection;
 import com.hanwool.saleapp.ultil.Server;
@@ -31,12 +32,14 @@ public class ThongtinkhachhangActivity extends AppCompatActivity {
     EditText edtTenkhachhang, edtDienthoai, edtEmail;
     Button btnXacnhan, btnTrove;
     Account account;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thongtinkhachhang);
         Anhxa();
         Intent intent = getIntent();
+
 //        account = new Account();
 //        account = (Account) intent.getSerializableExtra("email");
         btnTrove.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +62,8 @@ public class ThongtinkhachhangActivity extends AppCompatActivity {
                 final String ten =edtTenkhachhang.getText().toString().trim();
                 final String sdt = edtDienthoai.getText().toString().trim();
                 final String email = edtEmail.getText().toString().trim();
+
+                final String user_id = String.valueOf(MainActivity.user_id);
                 if (ten.length()>0 && sdt.length()>0 && email.length()>0) {
                     final RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
                     StringRequest stringRequest = new StringRequest(Request.Method.POST, Server.DuongdanDonhang, new Response.Listener<String>() {
@@ -74,6 +79,8 @@ public class ThongtinkhachhangActivity extends AppCompatActivity {
                                             MainActivity.manggiohang.clear();
                                             CheckConnection.ShowToast_Short(getApplicationContext(),"Bạn đã thêm dữ liệu giỏ hàng thành công");
                                             Intent intent = new Intent(getApplicationContext(),MainActivity.class);
+                                            intent.putExtra("emailtt", MainActivity.email);
+                                            intent.putExtra("useridtt", user_id);
                                             startActivity(intent);
                                             CheckConnection.ShowToast_Short(getApplicationContext(),"Mời bạn tiếp tục mua hàng");
                                         } else {
@@ -122,6 +129,7 @@ public class ThongtinkhachhangActivity extends AppCompatActivity {
                             hashMap.put("tenkhachhang",ten);
                             hashMap.put("sodienthoai",sdt);
                             hashMap.put("email",email);
+                            hashMap.put("user_id",String.valueOf(user_id));
                             return hashMap;
                         }
                     };
@@ -139,6 +147,7 @@ public class ThongtinkhachhangActivity extends AppCompatActivity {
         edtEmail = findViewById(R.id.edtEmail);
         btnXacnhan = findViewById(R.id.btnXacnhan);
         btnTrove = findViewById(R.id.btnTrove);
+        edtEmail.setText(MainActivity.email);
 
     }
 }

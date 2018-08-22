@@ -129,7 +129,7 @@ public class RegisterActivity extends AppCompatActivity {
                                     account.setUserName(jsonObject.getString("user_name"));
                                     account.setEmail(jsonObject.getString("email"));
                                     message = jsonObject.getString("message");
-                                    Toast.makeText(RegisterActivity.this, message, Toast.LENGTH_LONG).show();
+                                    Toast.makeText(RegisterActivity.this, "Đăng ký thành công!", Toast.LENGTH_LONG).show();
                                     //Start LoginActivity
                                     Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
                                     intent.putExtra("register", account.getUserName().toString());

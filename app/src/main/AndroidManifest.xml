@@ -19,7 +19,11 @@
         <activity
             android:name=".splashScreen"
             android:theme="@style/AppTheme.NoActionBar">
-            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity
             android:name=".LoaisanphamActivity"
@@ -73,24 +77,25 @@
             android:name=".GiohangActivity"
             android:label="Quản lý giỏ hàng"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".ThongtinkhachhangActivity" />
+        <activity android:name=".ThongtinkhachhangActivity"
+            android:label="Điền thông tin thanh toán"
+            android:theme="@style/MyActionBar" />
         <activity
             android:name=".Quanlydonhang_AdminActivity"
             android:label="Đơn hàng"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".Quanlytaikhoan_AdminActivity"
             android:label="Quản lý tài khoản"
             android:theme="@style/AppTheme.NoActionBar">
+            >
 
         </activity>
-        <activity android:name=".Chitietdonhang_AdminActivity">
+        <activity android:name=".Chitietdonhang_AdminActivity"
+            android:label="Chi tiết đơn hàng"
+            android:theme="@style/MyActionBar">
 
         </activity>
     </application>

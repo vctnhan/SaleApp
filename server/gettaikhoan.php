@@ -9,18 +9,17 @@
 			$row['tenkhachhang'],
 			$row['user_name'],
 			$row['password'],
-			$row['email'],
-			$row['iddonhang']));
+			$row['email']));
 	}
 	echo json_encode($mangtaikhoan);
 	class Taikhoan{
-		function Taikhoan($user_id, $tenkhachhang, $user_name,$password, $email,$iddonhang){
+		function Taikhoan($user_id, $tenkhachhang, $user_name,$password, $email){
 			$this->user_id=$user_id;
 			$this->tenkhachhang=$tenkhachhang;
 			$this->user_name=$user_name;
 			$this->password=$password;
 			$this->email=$email;
-			$this->iddonhang=$iddonhang;
+			
 		
 		}
 	}

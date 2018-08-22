@@ -40,8 +40,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.hanwool.saleapp.Key.Constants;
 import com.hanwool.saleapp.adapter.SanphammoiAdapter;
 import com.hanwool.saleapp.modal.Account;
+import com.hanwool.saleapp.modal.AccountLogin;
 import com.hanwool.saleapp.modal.Giohang;
 import com.hanwool.saleapp.modal.Loaisp;
 import com.hanwool.saleapp.modal.Sanpham;
@@ -58,7 +60,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
     HashMap<String, String> HashMapForURL ;
     HashMap<String, Integer> HashMapForLocalRes ;
-    TextView txtTen;
+    TextView txtTen,txtNew;
     Account account;
     ProgressBar progressBar;
     SliderLayout slideAds;
@@ -66,6 +68,8 @@ public class MainActivity extends AppCompatActivity
     public static ArrayList<Giohang> manggiohang;
     ArrayList<Sanpham> mangsanpham;
     SanphammoiAdapter sanphammoiAdapter;
+    public static int user_id;
+    public static String email;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +77,7 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        Intent intent = getIntent();
         AnhXa();
 //        Intent intent = getIntent();
 //
@@ -148,8 +153,24 @@ public class MainActivity extends AppCompatActivity
         lvNewPhone.setLayoutManager
                 (new GridLayoutManager(getApplicationContext(),2));
         lvNewPhone.setAdapter(sanphammoiAdapter);
+        txtTen = findViewById(R.id.txtNew);
+        //
+        if (getIntent().getStringExtra(Constants.KEY1) != null){
+            // key từ login activity
+           user_id =  Integer.parseInt(getIntent().getStringExtra(Constants.KEY1));
+        }
+        else {
+            //key truyền lại từ thong tin thanh toán sang
+            user_id =  Integer.parseInt(getIntent().getStringExtra("useridtt"));
+        }
+        if (getIntent().getStringExtra(Constants.KEY1) != null){
+            email =  getIntent().getStringExtra("email");
+        }
+        else {
+            email =  getIntent().getStringExtra("emailtt");
+        }
 
-
+//        txtTen.setText(String.valueOf(user_id));
         if (manggiohang != null) {
 
         } else {
@@ -274,6 +295,7 @@ public class MainActivity extends AppCompatActivity
         switch (item.getItemId()) {
             case R.id.menuGiohang:
                 Intent intent = new Intent(getApplicationContext(),GiohangActivity.class);
+
                 startActivity(intent);
         }
 
@@ -303,6 +325,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_manage) {
             //gio hang
             Intent i = new Intent(this, GiohangActivity.class);
+
             startActivity(i);
 
         } else if (id == R.id.log_out) {

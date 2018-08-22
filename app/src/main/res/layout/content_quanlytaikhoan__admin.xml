@@ -7,8 +7,20 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".Quanlytaikhoan_AdminActivity"
     tools:showIn="@layout/app_bar_quanlytaikhoan__admin">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="30sp"
+            android:text="Không có tài khoản nào"
+           android:id="@+id/ifNoData"
+            android:gravity="center"/>
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/lvAllAccount"></android.support.v7.widget.RecyclerView>
+    </FrameLayout>
 </android.support.constraint.ConstraintLayout>

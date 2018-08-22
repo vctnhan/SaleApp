@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class SanphammoiAdapter extends RecyclerView.Adapter<SanphammoiAdapter.ItemHolder> {
     Context context;
     ArrayList<Sanpham> arraySanpham;
+    int user_id;
     ProgressBar progressBar;
     public SanphammoiAdapter(Context context, ArrayList<Sanpham> arraySanpham) {
         this.context = context;
@@ -69,6 +70,7 @@ public class SanphammoiAdapter extends RecyclerView.Adapter<SanphammoiAdapter.It
                 public void onClick(View view) {
                     Intent intent = new Intent(context, ChitietsanphamActivity.class);
                     intent.putExtra("thongtinsanpham",arraySanpham.get(getPosition()));
+
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }

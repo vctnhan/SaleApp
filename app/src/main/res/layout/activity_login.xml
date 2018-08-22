@@ -29,7 +29,7 @@
             android:background="@drawable/vien"
             android:hint="@string/login_lable1"
             android:padding="10dp"
-            android:inputType="textCapWords"
+            android:inputType="text"
             android:textColor="@color/input_register"
             android:textColorHint="@color/input_register_hint" />
 
@@ -44,6 +44,7 @@
             android:padding="10dp"
             android:textColor="@color/input_register"
             android:textColorHint="@color/input_register_hint" />
+
 
         <!-- Login Button -->
 

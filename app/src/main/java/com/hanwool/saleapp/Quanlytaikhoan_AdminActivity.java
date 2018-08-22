@@ -15,6 +15,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -38,6 +39,7 @@ public class Quanlytaikhoan_AdminActivity extends AppCompatActivity
     RecyclerView lvAllAccount;
     ArrayList<Account> mangaccount;
     QuanlytaikhoanAdminAdapter quanlytaikhoanAdminAdapter;
+    TextView ifNoData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,11 +63,12 @@ public class Quanlytaikhoan_AdminActivity extends AppCompatActivity
         lvAllAccount= findViewById(R.id.lvAllAccount);
         mangaccount= new ArrayList<>();
         quanlytaikhoanAdminAdapter = new QuanlytaikhoanAdminAdapter(getApplicationContext(),mangaccount);
-        //
+        ifNoData = findViewById(R.id.ifNoData);
         lvAllAccount.setHasFixedSize(true);
         lvAllAccount.setLayoutManager
                 (new LinearLayoutManager(this));
         lvAllAccount.setAdapter(quanlytaikhoanAdminAdapter);
+
         getTaikhoan();
     }
 
@@ -91,7 +94,21 @@ public class Quanlytaikhoan_AdminActivity extends AppCompatActivity
                             EmailKH= jsonObject.getString("email");
                             mangaccount.add(new Account(ID,Username,TenKH,EmailKH,Password));
                             quanlytaikhoanAdminAdapter.notifyDataSetChanged();
+                            if (mangaccount.size()<=0){
+                                ifNoData.setVisibility(View.VISIBLE);
+                                lvAllAccount.setVisibility(View.INVISIBLE);
+                                quanlytaikhoanAdminAdapter.notifyDataSetChanged();
+                            }else {
+                                lvAllAccount.setVisibility(View.VISIBLE);
+                                ifNoData.setVisibility(View.INVISIBLE);
+                                quanlytaikhoanAdminAdapter.notifyDataSetChanged();
+                                if (mangaccount.size()<=0) {
+                                    ifNoData.setVisibility(View.VISIBLE);
+                                    lvAllAccount.setVisibility(View.INVISIBLE);
+                                    quanlytaikhoanAdminAdapter.notifyDataSetChanged();
+                                }
 
+                            }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -119,27 +136,27 @@ public class Quanlytaikhoan_AdminActivity extends AppCompatActivity
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.quanlytaikhoan__admin, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.quanlytaikhoan__admin, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -148,19 +165,15 @@ public class Quanlytaikhoan_AdminActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_camera) {
-            // Handle the camera action
+            // Quản lý tài khoản
         } else if (id == R.id.nav_gallery) {
             Intent i = new Intent(this, Quanlydonhang_AdminActivity.class);
             startActivity(i);
             finish();
         } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            Intent i = new Intent(this, LoginActivity.class);
+            startActivity(i);
+            finish();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

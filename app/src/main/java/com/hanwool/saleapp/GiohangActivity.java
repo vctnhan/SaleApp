@@ -20,6 +20,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.hanwool.saleapp.Key.Constants;
 import com.hanwool.saleapp.adapter.GiohangAdapter;
 import com.hanwool.saleapp.modal.Giohang;
 import com.hanwool.saleapp.ultil.CheckConnection;
@@ -76,6 +77,7 @@ public class GiohangActivity extends AppCompatActivity
             public void onClick(View view) {
                 if (MainActivity.manggiohang.size() > 0) {
                     Intent intent = new Intent(getApplicationContext(),ThongtinkhachhangActivity.class);
+
                     startActivity(intent);
                     finish();
                 } else {

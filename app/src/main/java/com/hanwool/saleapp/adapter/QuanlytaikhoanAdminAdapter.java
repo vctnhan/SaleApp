@@ -1,13 +1,21 @@
 package com.hanwool.saleapp.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.support.v7.app.AlertDialog;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.hanwool.saleapp.GiohangActivity;
+import com.hanwool.saleapp.MainActivity;
+import com.hanwool.saleapp.Quanlytaikhoan_AdminActivity;
 import com.hanwool.saleapp.R;
 import com.hanwool.saleapp.modal.Account;
 
@@ -33,12 +41,43 @@ public class QuanlytaikhoanAdminAdapter  extends RecyclerView.Adapter<Quanlytaik
     }
 
     @Override
-    public void onBindViewHolder(QuanlytaikhoanAdminAdapter.ItemHolder holder, int position) {
+    public void onBindViewHolder(QuanlytaikhoanAdminAdapter.ItemHolder holder, final int position) {
         Account account = arrayAccount.get(position);
         holder.txtId.setText( String.valueOf(account.getId()));
         holder.txtUsername.setText(account.getUserName());
         holder.txtEmailKH.setText(account.getEmail());
+        holder.btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(context,"Xóa thành công tài khoản: " + arrayAccount.get(position).getUserName(), Toast.LENGTH_SHORT).show();
+                arrayAccount.remove(position);
+                        notifyDataSetChanged();
 
+            }
+        });
+//            @Override
+//            public void onClick(View view) {
+//                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+//                builder.setTitle("Xác nhận xóa tài khoản");
+//                builder.setMessage("Bạn có chắc chắn muốn xóa tài khoản này ?");
+//                builder.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//                        arrayAccount.remove(position);
+//                        notifyDataSetChanged();
+//                    }
+//                });
+//                builder.setNegativeButton("Không", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+////                        giohangAdapter.notifyDataSetChanged();
+//
+//                    }
+//                });
+//                builder.show();
+//
+//            }
+//        });
 
     }
 
@@ -50,6 +89,7 @@ public class QuanlytaikhoanAdminAdapter  extends RecyclerView.Adapter<Quanlytaik
     public class  ItemHolder extends RecyclerView.ViewHolder{
 
         public TextView txtId, txtUsername, txtEmailKH;
+        public ImageButton btnDelete;
 
 
         public ItemHolder(View itemView) {
@@ -57,6 +97,8 @@ public class QuanlytaikhoanAdminAdapter  extends RecyclerView.Adapter<Quanlytaik
             txtId = itemView.findViewById(R.id.txtId);
             txtUsername= itemView.findViewById(R.id.txtUsername);
             txtEmailKH= itemView.findViewById(R.id.txtEmailKH);
+            btnDelete= itemView.findViewById(R.id.btnDelete);
+
 //            itemView.setOnClickListener(new View.OnClickListener() {
 //                @Override
 //                public void onClick(View view) {

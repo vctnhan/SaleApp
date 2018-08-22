@@ -12,6 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -33,6 +36,8 @@ public class Quanlydonhang_AdminActivity extends AppCompatActivity
 RecyclerView lvAllOrder;
 ArrayList<Donhang> mangDonhang;
 QuanlydonhangAdminAdapter quanlydonhangAdapterAdmin;
+LinearLayout ifHasData;
+TextView ifNoData;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,11 +61,14 @@ QuanlydonhangAdminAdapter quanlydonhangAdapterAdmin;
         lvAllOrder= findViewById(R.id.lvAllOrder);
         mangDonhang= new ArrayList<>();
         quanlydonhangAdapterAdmin = new QuanlydonhangAdminAdapter(getApplicationContext(),mangDonhang);
+        ifHasData = findViewById(R.id.ifHasData);
+        ifNoData = findViewById(R.id.ifNoData);
         //
         lvAllOrder.setHasFixedSize(true);
         lvAllOrder.setLayoutManager
                 (new LinearLayoutManager(this));
         lvAllOrder.setAdapter(quanlydonhangAdapterAdmin);
+        ifHasData.setVisibility(View.INVISIBLE);
         getDonhang();
 
     }
@@ -83,7 +91,14 @@ QuanlydonhangAdminAdapter quanlydonhangAdapterAdmin;
                             EmailKH= jsonObject.getString("email");
                             mangDonhang.add(new Donhang(ID,TenKH,SdtKH,EmailKH));
                             quanlydonhangAdapterAdmin.notifyDataSetChanged();
+                            if (mangDonhang.size()<=0){
+                                ifNoData.setVisibility(View.VISIBLE);
+                                ifHasData.setVisibility(View.INVISIBLE);
+                            }else {
+                                ifHasData.setVisibility(View.VISIBLE);
+                                ifNoData.setVisibility(View.INVISIBLE);
 
+                            }
 
 
                         } catch (JSONException e) {
@@ -113,27 +128,27 @@ QuanlydonhangAdminAdapter quanlydonhangAdapterAdmin;
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.quanlydonhang_activity__admin, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        // Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.quanlydonhang_activity__admin, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -146,14 +161,11 @@ QuanlydonhangAdminAdapter quanlydonhangAdapterAdmin;
           startActivity(i);
           finish();
         } else if (id == R.id.nav_gallery) {
-
+//Quản lý đơn hàng
         } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+            Intent i = new Intent(this, LoginActivity.class);
+            startActivity(i);
+            finish();
 
         }
 
