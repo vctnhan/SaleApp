@@ -84,7 +84,7 @@ public class Chitietdonhang_AdminActivity extends AppCompatActivity {
 //                   for (int i =0; i<response.length(); i++) {
                         try {
 
-                            JSONObject jsonObject = response.getJSONObject(a-1);
+                            JSONObject jsonObject = response.getJSONObject(a-24);
                             ID = jsonObject.getInt("id");
                             Madonhang = jsonObject.getInt("madonhang");
                             Masanpham = jsonObject.getInt("masanpham");
@@ -92,9 +92,7 @@ public class Chitietdonhang_AdminActivity extends AppCompatActivity {
                             Giasanpham = jsonObject.getInt("giasanpham");
                             Soluongsanpham = jsonObject.getInt("soluongsanpham");
                             mangChitietdonhang.add(new Chitietdonhang(ID, Madonhang, Masanpham, Tensanpham, Giasanpham, Soluongsanpham));
-
-
-                                                        chitietdonhangAdapter.notifyDataSetChanged();
+                            chitietdonhangAdapter.notifyDataSetChanged();
 
 
                         } catch (JSONException e) {

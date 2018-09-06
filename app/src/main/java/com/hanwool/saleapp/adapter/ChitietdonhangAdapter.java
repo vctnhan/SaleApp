@@ -43,7 +43,7 @@ public class ChitietdonhangAdapter  extends RecyclerView.Adapter<ChitietdonhangA
         holder.txtTensanpham.setText(chitietdonhang.getTensanpham());
         DecimalFormat decimalFormat= new DecimalFormat("###,###,###");
         holder.txtGiasanpham.setText(decimalFormat.format(chitietdonhang.getGiasanpham()));
-        holder.txtGiasanpham.setText(decimalFormat.format(chitietdonhang.getSoluongsanpham()));
+        holder.txtSoluongsanpham.setText(decimalFormat.format(chitietdonhang.getSoluongsanpham()));
 
 
 
